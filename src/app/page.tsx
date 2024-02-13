@@ -1,95 +1,50 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+
+import { useState, useEffect } from 'react'
+import styles from './page.module.css'
 
 export default function Home() {
+  const [textareaContent, setTextareaContent] = useState([])
+  const [modifiedContent, setModifiedContent] = useState([])
+
+  function textareaChange(event: any) {
+    event.preventDefault()
+    const now = event.target.value.split('\n')
+    setTextareaContent(now)
+  }
+
+  useEffect(() => {
+    // This code will run after the component has rendered and the state has been updated
+    const updatedContent = textareaContent.map((item, index) => {
+      if (
+        textareaContent[index] === '' &&
+        index < textareaContent.length - 1 &&
+        textareaContent[index + 1] === ''
+      ) {
+        return '<br>\n'
+      } else if (
+        textareaContent[index] === '' &&
+        index < textareaContent.length - 1 &&
+        textareaContent[index + 1] !== ''
+      ) {
+        return '<br>\n\n'
+      }
+      return item + '\n\n'
+    })
+
+    // Update the state with the modified content
+    setModifiedContent(updatedContent)
+  }, [textareaContent]) // Add textareaContent as a dependency to useEffect
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    <>
+      <h1>brbr</h1>
+      <textarea onChange={textareaChange} className={styles.input}></textarea>
+      <textarea
+        readOnly
+        value={modifiedContent.join('')}
+        className={styles.output}
+      ></textarea>
+    </>
+  )
 }
