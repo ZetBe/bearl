@@ -37,12 +37,14 @@ export default function Home() {
   return (
     <>
       <h1>brbr</h1>
-      <textarea onChange={textareaChange} className={styles.input}></textarea>
-      <textarea
-        readOnly
-        value={modifiedContent.join('')}
-        className={styles.output}
-      ></textarea>
+      <div className={styles.body}>
+        <textarea onChange={textareaChange} className={styles.input}></textarea>
+        <textarea
+          readOnly
+          value={modifiedContent.join('')}
+          className={styles.output}
+        ></textarea>
+      </div>
     </>
   )
 }

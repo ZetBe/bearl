@@ -9,3 +9,9 @@
   width: 500px;
   height: 500px;
 }
+
+.body {
+  display: flex;
+  justify-items: flex-end;
+  padding: 20px;
+}
