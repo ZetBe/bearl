@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import styles from './page.module.css'
 
 export default function Home() {
-  const [textareaContent, setTextareaContent] = useState([])
-  const [modifiedContent, setModifiedContent] = useState([])
+  const [textareaContent, setTextareaContent] = useState<string[]>([])
+  const [modifiedContent, setModifiedContent] = useState<string[]>([])
 
   function textareaChange(event: any) {
     event.preventDefault()
@@ -14,7 +14,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // This code will run after the component has rendered and the state has been updated
     const updatedContent = textareaContent.map((item, index) => {
       if (
         textareaContent[index] === '' &&
@@ -32,9 +31,8 @@ export default function Home() {
       return item + '\n\n'
     })
 
-    // Update the state with the modified content
     setModifiedContent(updatedContent)
-  }, [textareaContent]) // Add textareaContent as a dependency to useEffect
+  }, [textareaContent])
 
   return (
     <>
