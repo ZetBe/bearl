@@ -1,4 +1,10 @@
 import { Analytics } from '@vercel/analytics/react'
+import { Montserrat } from 'next/font/google'
+
+const monsterrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata = {
   title: 'brbr',
@@ -11,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={monsterrat.className}>
       <body>{children}</body>
       <Analytics />
     </html>

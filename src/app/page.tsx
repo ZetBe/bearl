@@ -1,12 +1,16 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useId } from 'react'
 import Select from 'react-select'
 import CommonText from './commonText'
 import NotionText from './notionText'
-import { SiVelog } from 'react-icons/si'
-import { FaGithub } from 'react-icons/fa'
-import Link from 'next/link'
+import Footer from './Footer'
+
+const body = {
+  height: 'auto',
+  minHeight: '100%',
+  paddingBottom: '300px',
+}
 
 export default function Home() {
   const [select, setSelect] = useState('')
@@ -17,26 +21,21 @@ export default function Home() {
   return (
     <>
       <h1>brbr</h1>
-      <Select
-        options={options}
-        defaultValue={options[0]}
-        onChange={(e: any) => setSelect(e.value)}
-        value={options.filter(function (option) {
-          return option.value === select
-        })}
-      />
-      {select === 'md' && <CommonText></CommonText>}
-      {select === 'notion' && <NotionText></NotionText>}
-      <hr></hr>
-      <h3>
-        만든 사람: 서희원(ZetBe || Kevin)
-        <Link href="https://github.com/ZetBe" target="_blank">
-          <FaGithub />
-        </Link>
-        <Link href="https://velog.io/@zetbe/posts" target="_blank">
-          <SiVelog />
-        </Link>
-      </h3>
+      <div style={body}>
+        <Select
+          options={options}
+          instanceId={useId()}
+          defaultValue={options[0]}
+          onChange={(e: any) => setSelect(e.value)}
+          value={options.filter(function (option) {
+            return option.value === select
+          })}
+        />
+        {select === 'md' && <CommonText></CommonText>}
+        {select === 'notion' && <NotionText></NotionText>}
+        <hr></hr>
+      </div>
+      <Footer></Footer>
     </>
   )
 }

@@ -1,11 +1,17 @@
 'use client'
 import { useState, useEffect } from 'react'
-import styles from './commonText.module.css'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { MdContentCopy } from 'react-icons/md'
+import Button from './Button'
+import Container from './Container'
+import TextArea from './TextArea'
 
 export default function CommonText() {
   const [textareaContent, setTextareaContent] = useState<string[]>([])
   const [modifiedContent, setModifiedContent] = useState<string[]>([])
   const [text, setText] = useState<string>('')
+  const [isHovered, setIsHovered] = useState(false)
+  const [isTextarea1Focused, setIsTextarea1Focused] = useState(false)
 
   function textareaInput(event: any) {
     const now = event.target.value.split('\n')
@@ -47,20 +53,32 @@ export default function CommonText() {
 
   return (
     <>
-      <div className={styles.body}>
-        <textarea
+      <Container>
+        <TextArea
           onInput={textareaInput}
           value={text}
-          className={styles.input}
+          onClick={() => setIsTextarea1Focused(true)}
+          onBlur={() => setIsTextarea1Focused(false)}
+          $isFocus={isTextarea1Focused}
           placeholder="입력"
-        ></textarea>
-        <textarea
+        ></TextArea>
+        <TextArea
           readOnly
+          style={{ outline: `none` }}
+          $isHovered={isHovered}
           value={modifiedContent.join('')}
-          className={styles.output}
           placeholder="출력"
-        ></textarea>
-      </div>
+        ></TextArea>
+        <CopyToClipboard text={modifiedContent.join('')}>
+          <Button
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <MdContentCopy />
+          </Button>
+        </CopyToClipboard>
+      </Container>
+
       <h2>Mark Down</h2>
       <p>
         여기서는 일반적인 마크다운 문서에 대해 br태그 적용 가능한 페이지입니다.

@@ -1,11 +1,17 @@
 'use client'
 import { useState, useEffect } from 'react'
-import styles from './notionText.module.css'
+import Container from './Container'
+import TextArea from './TextArea'
+import Button from './Button'
+import CopyToClipboard from 'react-copy-to-clipboard'
+import { MdContentCopy } from 'react-icons/md'
 
 export default function NotionText() {
   const [textareaContent, setTextareaContent] = useState<string[]>([])
   const [modifiedContent, setModifiedContent] = useState<string[]>([])
   const [text, setText] = useState<string>('')
+  const [isHovered, setIsHovered] = useState(false)
+  const [isTextarea1Focused, setIsTextarea1Focused] = useState(false)
 
   function textareaInput(event: any) {
     const now = event.target.value.split('\n')
@@ -80,20 +86,31 @@ export default function NotionText() {
 
   return (
     <>
-      <div className={styles.body}>
-        <textarea
-          placeholder="입력"
+      <Container>
+        <TextArea
           onInput={textareaInput}
           value={text}
-          className={styles.input}
-        ></textarea>
-        <textarea
+          onClick={() => setIsTextarea1Focused(true)}
+          onBlur={() => setIsTextarea1Focused(false)}
+          $isFocus={isTextarea1Focused}
+          placeholder="입력"
+        ></TextArea>
+        <TextArea
           readOnly
-          placeholder="출력"
+          style={{ outline: `none` }}
+          $isHovered={isHovered}
           value={modifiedContent.join('')}
-          className={styles.output}
-        ></textarea>
-      </div>
+          placeholder="출력"
+        ></TextArea>
+        <CopyToClipboard text={modifiedContent.join('')}>
+          <Button
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <MdContentCopy />
+          </Button>
+        </CopyToClipboard>
+      </Container>
       <h2>Notion text</h2>
       <p>
         여기서는 Notion(노션)에서 글을 복사해서 다른 마크다운 파일에 붙여넣기 할
