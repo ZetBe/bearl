@@ -1,66 +1,29 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import styles from './page.module.css'
+import React, { useState } from 'react'
+import Select from 'react-select'
+import CommonText from './commonText'
+import NotionText from './notionText'
 
 export default function Home() {
-  const [textareaContent, setTextareaContent] = useState<string[]>([])
-  const [modifiedContent, setModifiedContent] = useState<string[]>([])
-  const [text, setText] = useState<string>('')
-
-  function textareaInput(event: any) {
-    const now = event.target.value.split('\n')
-    setTextareaContent(now)
-    setText(event.target.value)
-  }
-
-  useEffect(() => {
-    const updatedContent = textareaContent.map((item, index) => {
-      if (
-        textareaContent[index].trim() === '' &&
-        index < textareaContent.length - 1 &&
-        textareaContent[index + 1].trim() === ''
-      ) {
-        return '<br>\n'
-      } else if (
-        textareaContent[index].trim() === '' &&
-        index < textareaContent.length - 1 &&
-        textareaContent[index + 1] !== ''
-      ) {
-        return '<br>\n\n'
-      } else if (
-        textareaContent[index].trim() !== '' &&
-        index < textareaContent.length - 1 &&
-        textareaContent[index + 1].trim() === ''
-      ) {
-        return item + '\n\n'
-      } else if (
-        textareaContent[index].trim() !== '' &&
-        index < textareaContent.length - 1 &&
-        textareaContent[index + 1].trim() !== ''
-      ) {
-        return item + '\n'
-      }
-      return item
-    })
-    setModifiedContent(updatedContent)
-  }, [textareaContent])
-
+  const [select, setSelect] = useState('')
+  const options = [
+    { value: 'notion', label: '노션/Notion' },
+    { value: 'md', label: '.md 파일' },
+  ]
   return (
     <>
       <h1>brbr</h1>
-      <div className={styles.body}>
-        <textarea
-          onInput={textareaInput}
-          value={text}
-          className={styles.input}
-        ></textarea>
-        <textarea
-          readOnly
-          value={modifiedContent.join('')}
-          className={styles.output}
-        ></textarea>
-      </div>
+      <Select
+        options={options}
+        defaultValue={options[0]}
+        onChange={(e: any) => setSelect(e.value)}
+        value={options.filter(function (option) {
+          return option.value === select
+        })}
+      />
+      {select === 'md' && <CommonText></CommonText>}
+      {select === 'notion' && <NotionText></NotionText>}
     </>
   )
 }

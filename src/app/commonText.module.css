@@ -1,0 +1,19 @@
+.input {
+  resize: none;
+  width: 500px;
+  height: 500px;
+  margin-right: 10%;
+}
+
+.output {
+  resize: none;
+  width: 500px;
+  height: 500px;
+  margin-right: 20%;
+}
+
+.body {
+  display: flex;
+  justify-items: flex-end;
+  padding: 20px;
+}
