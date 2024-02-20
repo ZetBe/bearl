@@ -52,13 +52,27 @@ export default function CommonText() {
           onInput={textareaInput}
           value={text}
           className={styles.input}
+          placeholder="입력"
         ></textarea>
         <textarea
           readOnly
           value={modifiedContent.join('')}
           className={styles.output}
+          placeholder="출력"
         ></textarea>
       </div>
+      <h2>Mark Down</h2>
+      <p>
+        여기서는 일반적인 마크다운 문서에 대해 br태그 적용 가능한 페이지입니다.
+      </p>
+      <p>
+        여러분께서 만약 마크다운 문서를 작성하다가 개행만으로 자동 br태그를
+        만들고 싶다?<br></br>그렇다면 잘 오신겁니다!
+      </p>
+      <p>
+        일단 붙어넣기 해보시면 바로 오른쪽에 개행한 횟수 -1 만큼 br태그가
+        생성되는 모습을 볼 수 있습니다.
+      </p>
     </>
   )
 }
