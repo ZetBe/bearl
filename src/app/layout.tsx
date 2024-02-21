@@ -1,5 +1,6 @@
 import { Analytics } from '@vercel/analytics/react'
 import { Montserrat } from 'next/font/google'
+import StyledJsxRegistry from './registry'
 
 const monsterrat = Montserrat({
   subsets: ['latin'],
@@ -18,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={monsterrat.className}>
-      <body>{children}</body>
+      <body>
+        <StyledJsxRegistry>{children}</StyledJsxRegistry>
+      </body>
       <Analytics />
     </html>
   )
