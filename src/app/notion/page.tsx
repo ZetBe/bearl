@@ -1,8 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
-import Container from './Container'
-import TextArea from './TextArea'
-import Button from './Button'
+import Container from '../text-style/Container'
+import TextArea from '../text-style/TextArea'
+import Button from '../text-style/Button'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import { MdContentCopy } from 'react-icons/md'
 

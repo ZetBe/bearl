@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { MdContentCopy } from 'react-icons/md'
-import Button from './Button'
-import Container from './Container'
-import TextArea from './TextArea'
+import Button from '../text-style/Button'
+import Container from '../text-style/Container'
+import TextArea from '../text-style/TextArea'
 
 export default function CommonText() {
   const [textareaContent, setTextareaContent] = useState<string[]>([])

@@ -6,11 +6,12 @@ import Link from 'next/link'
 const F = styled.footer`
   position: relative;
   width: 100%;
-  height: 60px;
+  height: 40px;
   background-color: #f0f0f0;
   padding: 10px;
   text-align: center;
   font-size: 12px;
+  margin-top: 50%;
 `
 
 export default function Footer() {
