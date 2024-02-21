@@ -20,6 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={monsterrat.className}>
+      <meta
+        name="google-site-verification"
+        content="zBs1Ng1bhNf_OicTIkiWacrEk6V_WlU_8WV7svSVWtE"
+      />
       <body>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>
