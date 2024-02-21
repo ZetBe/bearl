@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Montserrat } from 'next/font/google'
 import StyledJsxRegistry from './registry'
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>
+      <GoogleAnalytics gaId="G-T3M2MY6Q01"></GoogleAnalytics>
       <Analytics />
     </html>
   )
