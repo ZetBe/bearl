@@ -117,7 +117,7 @@ export default function NotionText() {
         경우, 사용하는 공간입니다.
       </p>
       <p>
-        여러분께서 만약 Notion을 통해 brbr사이트를 거쳐 일반 마크다운 페이지로
+        여러분께서 만약 Notion을 통해 bearl사이트를 거쳐 일반 마크다운 페이지로
         텍스트 붙이기할 경우, 생기는 문제를 어느정도 해결하기 위해 만들었습니다.
       </p>
       <p>
