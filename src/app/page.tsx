@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import Footer from './app-style/Footer'
 import Header from './app-style/Header'
 import Nav from './app-style/Nav'

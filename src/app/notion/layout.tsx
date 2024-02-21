@@ -10,12 +10,11 @@ export default function MarkdownLayout({
   children: React.ReactNode
 }) {
   return (
-    <section>
+    <>
       <Header></Header>
       <Nav></Nav>
-
-      {children}
+      <section>{children}</section>
       <Footer></Footer>
-    </section>
+    </>
   )
 }
