@@ -8,7 +8,7 @@ const monsterrat = Montserrat({
 })
 
 export const metadata = {
-  title: 'brbr',
+  title: 'bearl',
   description: 'br태그 넣기 싫으면 붙여보세요!',
 }
 
