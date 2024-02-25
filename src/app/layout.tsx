@@ -24,6 +24,8 @@ export default function RootLayout({
         name="google-site-verification"
         content="zBs1Ng1bhNf_OicTIkiWacrEk6V_WlU_8WV7svSVWtE"
       />
+      <meta name="naver-site-verification" content="7bcf7540e18d545efa703e5a5293abadde140c45" />
+
       <body>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>
