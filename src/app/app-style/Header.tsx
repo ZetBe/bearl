@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
-const StyledLink = styled(Link)`
+const TitleLink = styled(Link)`
   text-decoration: none;
-  color: #fff;
+  color: black;
   font-weight: bold;
 
   &:hover {
@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
 export default function Header() {
   return (
     <h1>
-      <Link href="/">bearl</Link>
+      <TitleLink href="/">bearl</TitleLink>
     </h1>
   )
 }
