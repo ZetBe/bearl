@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
+import { sendGTMEvent } from '@next/third-parties/google'
 
 const StyledNav = styled.nav`
   background-color: #333;
@@ -35,13 +36,34 @@ const Nav = () => {
     <StyledNav>
       <StyledUl>
         <StyledLi>
-          <StyledLink href="/">홈</StyledLink>
+          <StyledLink
+            href="/"
+            onClick={() =>
+              sendGTMEvent({ event: 'buttonClicked', value: 'main' })
+            }
+          >
+            홈
+          </StyledLink>
         </StyledLi>
         <StyledLi>
-          <StyledLink href="/notion">Notion</StyledLink>
+          <StyledLink
+            href="/notion"
+            onClick={() =>
+              sendGTMEvent({ event: 'buttonClicked', value: 'notion' })
+            }
+          >
+            Notion
+          </StyledLink>
         </StyledLi>
         <StyledLi>
-          <StyledLink href="/markdown">md</StyledLink>
+          <StyledLink
+            href="/markdown"
+            onClick={() =>
+              sendGTMEvent({ event: 'buttonClicked', value: 'markdown' })
+            }
+          >
+            md
+          </StyledLink>
         </StyledLi>
       </StyledUl>
     </StyledNav>

@@ -1,5 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { Montserrat } from 'next/font/google'
 import StyledJsxRegistry from './registry'
 
@@ -24,11 +24,15 @@ export default function RootLayout({
         name="google-site-verification"
         content="zBs1Ng1bhNf_OicTIkiWacrEk6V_WlU_8WV7svSVWtE"
       />
-      <meta name="naver-site-verification" content="7bcf7540e18d545efa703e5a5293abadde140c45" />
+      <meta
+        name="naver-site-verification"
+        content="7bcf7540e18d545efa703e5a5293abadde140c45"
+      />
 
       <body>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>
+      <GoogleTagManager gtmId="GTM-MHFQSBJC"></GoogleTagManager>
       <GoogleAnalytics gaId="G-T3M2MY6Q01"></GoogleAnalytics>
       <Analytics />
     </html>
